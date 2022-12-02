@@ -1,0 +1,9 @@
+server:
+      port: 8080
+web:
+  upload-path: D:/data/
+
+spring:
+  web:
+    resources:
+      static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,file:${web.upload-path}
