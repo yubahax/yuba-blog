@@ -2,6 +2,7 @@ package com.example.blog.service.serviceImpl;
 
 
 import com.example.blog.entity.User;
+import com.example.blog.mapper.UserMapper;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -18,6 +19,7 @@ public class UserAuthService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
         User data = mapper.selectByName(username);
         if(data == null) {
             throw new UsernameNotFoundException("用户 "+username+" 登录失败，用户名不存在！");

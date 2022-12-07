@@ -1,6 +1,10 @@
 package com.example.blog.util;
 
 
+import com.example.blog.entity.User;
+import com.example.blog.entity.UserDetail;
+import com.example.blog.mapper.UserDetailMapper;
+import com.example.blog.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.core.Authentication;
@@ -18,7 +22,7 @@ public class RedisUtils {
     private RedisTemplate<String, Object> redisTemplate;
 
     @Resource
-    StudentMapper studentMapper;
+    UserDetailMapper detailMapper;
 
     @Resource
     UserMapper userMapper;
@@ -61,13 +65,13 @@ public class RedisUtils {
         return user;
     }
 
-    public Student getStudent() {
+    public UserDetail getStudent() {
         User user = this.getUser();
-        Student student = (Student) this.get("user"+user.getId()+"student");
-        if (student == null) {
-            student = studentMapper.getStudentByUserId(user.getId());
-            this.set("user"+user.getId()+"student",student);
+        UserDetail detail = (UserDetail) this.get("user"+user.getId()+"detail");
+        if (detail == null) {
+            detail = detailMapper.selectById(user.getId());
+            this.set("user"+user.getId()+"detail",detail);
         }
-        return student;
+        return detail;
     }
 }
