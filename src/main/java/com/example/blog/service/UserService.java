@@ -27,6 +27,13 @@ public interface UserService {
      * @param id 用户编号
      * @return 用户实体类
      */
-    public void deleteByname(int id);
+    public void deleteByName(int id);
+
+    /**
+     * 根据id查找用户信息
+     * @param id 用户编号
+     * @return 用户实体类
+     */
+    public User selectUserById(int id);
 
 }

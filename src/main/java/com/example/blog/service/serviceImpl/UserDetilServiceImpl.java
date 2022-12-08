@@ -21,7 +21,7 @@ public class UserDetilServiceImpl implements UserDetailService {
     @Override
     public UserDetail selectUserDetailById(int id) {
         UserDetail userDetail = (UserDetail) redisUtils.get("userDetail"+id);
-        if(userDetail==null){
+        if (userDetail==null) {
              userDetail = userDetailMapper.selectById(id);
              redisUtils.set("userDetail"+id,userDetail);
         }

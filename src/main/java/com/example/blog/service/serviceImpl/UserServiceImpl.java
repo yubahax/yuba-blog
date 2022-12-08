@@ -31,12 +31,23 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteByname(int id) {
+    public void deleteByName(int id) {
         User user = redisUtils.getUser();
         if(user!=null){
             redisUtils.set(user.getName(), null);
         }
         userMapper.deleteById(id);
 
+    }
+
+    @Override
+    public User selectUserById(int id) {
+        /**
+         *
+         * 查找user，首先从redis中get，若为空则查找mysql
+         */
+
+
+        return user;
     }
 }
