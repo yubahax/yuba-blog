@@ -1,4 +1,4 @@
-package com.example.blog.controller;
+package com.example.blog.controller.api;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,7 +21,7 @@ public class FileUploadController {
 
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/");
 
-    @PostMapping("/upload")
+    @PostMapping("/api/upload")
     public String upload(MultipartFile uploadFile,
                          HttpServletRequest request) {
 
@@ -49,7 +49,7 @@ public class FileUploadController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(filePath);
+
         return filePath;
 
     }
