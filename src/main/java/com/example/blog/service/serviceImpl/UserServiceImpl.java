@@ -46,8 +46,10 @@ public class UserServiceImpl implements UserService {
          *
          * 查找user，首先从redis中get，若为空则查找mysql
          */
-
-
+        User user = redisUtils.getUser();
+        if(user!=null){
+            user=userMapper.selectById(id);
+        }
         return user;
     }
 }
