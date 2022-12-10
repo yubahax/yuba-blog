@@ -50,4 +50,14 @@ public class UserServiceImpl implements UserService {
         }
         return user;
     }
+
+    @Override
+    public boolean isUserExist(String name) {
+        User user = userMapper.selectByName(name);
+        if(user != null){
+            redisUtils.set("user"+name,user);
+            return true;
+        }
+        return false;
+    }
 }
