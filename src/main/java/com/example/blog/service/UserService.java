@@ -36,4 +36,11 @@ public interface UserService {
      */
     public User selectUserById(int id);
 
+    /**
+     * 判断当前用户名是否已经注册
+     * @param name 用户名
+     * @return true为已经注册，false为未注册
+     */
+    public boolean isUserExist(String name);
+
 }

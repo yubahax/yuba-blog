@@ -26,4 +26,11 @@ public class User {
 
     @TableField("isalive")
     private int isalive;
+
+    public User(String name, String password, String role, int isalive) {
+        this.name = name;
+        this.password = password;
+        this.role = role;
+        this.isalive = isalive;
+    }
 }

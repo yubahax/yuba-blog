@@ -12,7 +12,7 @@ public class ParamVail {
     private static final Pattern VALID_EMAIL_ADDRESS_REGEX =
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
-    public boolean vailNumber(int num) {
+    public static boolean vailNumber(int num) {
         String str = String.valueOf(num);
         if (StringUtils.hasText(str)) {
             String regex = "^[0-9\u4E00-\u9FA5]+$";
@@ -26,7 +26,7 @@ public class ParamVail {
     }
 
 
-    public boolean vailString(String str) {
+    public static boolean vailString(String str) {
         if (StringUtils.hasText(str)) {
             String regex = "^[a-zA-Z0-9\u4E00-\u9FA5]+$";
             Pattern pattern = Pattern.compile(regex);
@@ -39,7 +39,7 @@ public class ParamVail {
     }
 
 
-    public boolean vailString(List<String> strs) {
+    public static boolean vailString(List<String> strs) {
         boolean flag = true;
         for (String str:strs) {
             if (StringUtils.hasText(str)) {
@@ -56,7 +56,7 @@ public class ParamVail {
         return flag;
     }
 
-    public boolean isEmail(String emailStr) {
+    public static boolean isEmail(String emailStr) {
         Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
         return matcher.find();
     }
