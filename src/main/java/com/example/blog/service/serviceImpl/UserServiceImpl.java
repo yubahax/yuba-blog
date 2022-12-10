@@ -19,32 +19,30 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updateUser(User user) {
-        redisUtils.set(user.getName(),user);
+        redisUtils.set("user"+user.getId(),user);
         userMapper.updateById(user);
-
     }
 
     @Override
     public void addUser(User user) {
-        redisUtils.set(user.getName(),user);
+        redisUtils.set("user"+user.getId(),user);
         userMapper.insert(user);
     }
 
     @Override
     public void deleteByName(int id) {
-        User user = redisUtils.getUser();
-        if(user!=null){
+        User user = (User) redisUtils.get("user"+id);
+        if (user!=null) {
             redisUtils.set(user.getName(), null);
         }
         userMapper.deleteById(id);
-
     }
 
     @Override
     public User selectUserById(int id) {
 
         User user = (User) redisUtils.get("user"+id);
-        if(user == null){
+        if (user == null) {
             user=userMapper.selectById(id);
             redisUtils.set("user"+id,user);
         }
@@ -54,8 +52,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean isUserExist(String name) {
         User user = userMapper.selectByName(name);
-        if(user != null){
-            redisUtils.set("user"+name,user);
+        if (user != null) {
+            redisUtils.set("user"+user.getId(),user);
             return true;
         }
         return false;
