@@ -31,7 +31,11 @@ public interface UserService {
      */
     public User selectUserById(int id);
 
-
-
+    /**
+     * 根据name查找用户信息
+     * @param name 用户名
+     * @return 用户实体类
+     */
+    public User selectUserByName(String name);
 
 }
