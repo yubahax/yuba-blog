@@ -15,12 +15,7 @@ public interface UserService {
      */
     public void updateUser(User user);
 
-    /**
-     * 增加用户
-     * @param user 用户名
-     * @return 用户实体类
-     */
-    public void addUser(User user);
+
 
     /**
      * 删除用户
@@ -36,11 +31,7 @@ public interface UserService {
      */
     public User selectUserById(int id);
 
-    /**
-     * 判断当前用户名是否已经注册
-     * @param name 用户名
-     * @return true为已经注册，false为未注册
-     */
-    public boolean isUserExist(String name);
+
+
 
 }

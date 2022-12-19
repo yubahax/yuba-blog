@@ -4,9 +4,15 @@ import com.example.blog.entity.User;
 import com.example.blog.mapper.UserMapper;
 import com.example.blog.service.UserService;
 import com.example.blog.util.RedisUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -17,17 +23,15 @@ public class UserServiceImpl implements UserService {
     @Resource
     RedisUtils redisUtils;
 
+
+
     @Override
     public void updateUser(User user) {
         redisUtils.set("user"+user.getId(),user);
         userMapper.updateById(user);
     }
 
-    @Override
-    public void addUser(User user) {
-        redisUtils.set("user"+user.getId(),user);
-        userMapper.insert(user);
-    }
+
 
     @Override
     public void deleteByName(int id) {
@@ -49,13 +53,6 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
-    @Override
-    public boolean isUserExist(String name) {
-        User user = userMapper.selectByName(name);
-        if (user != null) {
-            redisUtils.set("user"+user.getId(),user);
-            return true;
-        }
-        return false;
-    }
+
+
 }

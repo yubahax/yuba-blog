@@ -53,6 +53,17 @@ public class RedisUtils {
         return false;
     }
 
+    public boolean set(final String key, Object value,int timeCount,TimeUnit timeUnit) {
+        try {
+            redisTemplate.opsForValue().set(key, value,timeCount, timeUnit);
+            //储存信息12小时后过期
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     public User getUser() {
         SecurityContext context = SecurityContextHolder.getContext();
         Authentication authentication = context.getAuthentication();

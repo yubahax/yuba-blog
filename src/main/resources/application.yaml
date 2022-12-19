@@ -1,9 +1,21 @@
 server:
-      port: 8080
+  port: 8080
 web:
   upload-path: D:/data/
-
 spring:
+  mail:
+    host: smtp.qq.com
+    username: 571239193@qq.com
+    password: rbtskgjpzgsibcbe
+  redis:
+    host: localhost
+    database: 0
+    port: 6379
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ssmtest
+    username: root
+    password: 575888hmq
   web:
     resources:
       static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,file:${web.upload-path}
