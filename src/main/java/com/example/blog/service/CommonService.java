@@ -13,6 +13,8 @@ public interface CommonService {
      */
     public boolean isUserExist(String name);
 
+    boolean doVerify(String email, String code);
+
     /**
      * 增加用户
      * @param user 用户名

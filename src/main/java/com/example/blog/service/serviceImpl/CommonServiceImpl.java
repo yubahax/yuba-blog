@@ -41,6 +41,15 @@ public class CommonServiceImpl implements CommonService {
     }
 
     @Override
+    public boolean doVerify(String email, String code) {
+        String string = (String) redisUtils.get("verify:code:" + mail);
+        if (string == null) {
+            return false;
+        }
+        return string.equals(code);
+    }
+
+    @Override
     public void addUser(User user) {
         redisUtils.set("user"+user.getId(),user);
         userMapper.insert(user);
