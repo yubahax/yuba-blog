@@ -1,17 +1,14 @@
 package com.example.blog.entity;
 
-import com.baomidou.mybatisplus.annotations.TableField;
-import com.baomidou.mybatisplus.annotations.TableId;
+
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 
 public class UserDetail {
     @TableId
     private int id;
     @TableField("name")
     private String name;
-    @TableField("sex")
-    private String sex;
-    @TableField("age")
-    private int age;
     @TableField("email")
     private String email;
     @TableField("phone")

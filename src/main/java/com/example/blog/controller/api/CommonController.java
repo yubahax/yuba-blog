@@ -1,5 +1,6 @@
 package com.example.blog.controller.api;
 
+
 import com.example.blog.entity.User;
 import com.example.blog.service.CommonService;
 import com.example.blog.service.UserService;
@@ -51,15 +52,16 @@ public class CommonController {
     }
 
 
-    @PutMapping("/reset")
+    @GetMapping("/reset")
     public RestBean reset(@RequestParam("name") String name,@RequestParam("password")String password, @RequestParam("email")String email, @RequestParam("code")String code) {
         if (!ParamVail.vailString(name)||!ParamVail.vailString(password) || password.length() < 8 || password.length() > 16) {
             return RestGenerator.errorResult("参数输入错误，修改失败");
         }
         if (commonService.doVerify(email, code)) {
             User user = userService.selectUserByName(name);
-            if(user==null)
+            if(user==null) {
                 return RestGenerator.errorResult("用户名不存，修改失败");
+            }
             user.setPassword(new BCryptPasswordEncoder().encode(password));
             userService.updateUser(user);
             return RestGenerator.successResult("密码修改成功");
@@ -67,6 +69,14 @@ public class CommonController {
         else {
             return RestGenerator.errorResult("验证码输入错误，修改失败");
         }
+    }
+
+    @GetMapping("/page/{num}/{size}")
+    public RestBean page(@PathVariable("num") int num,
+                         @PathVariable("size") int size) {
+
+//        IPage<User> page=new IPage<>(num,size);
+        return RestGenerator.successResult(userService.selectPageVo(num,size));
 
     }
 }

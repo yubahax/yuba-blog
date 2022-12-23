@@ -7,6 +7,11 @@ spring:
     host: smtp.qq.com
     username: 571239193@qq.com
     password: rbtskgjpzgsibcbe
+
+  mvc:
+    pathmatch:
+        matching-strategy:  ant_path_matcher
+
   redis:
     host: localhost
     database: 0

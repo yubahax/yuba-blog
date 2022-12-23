@@ -3,8 +3,9 @@ package com.example.blog.service;
 import com.example.blog.entity.User;
 import com.example.blog.mapper.UserMapper;
 import org.springframework.stereotype.Service;
-
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public interface UserService {
@@ -15,7 +16,7 @@ public interface UserService {
      */
     public void updateUser(User user);
 
-
+    public List<User> selectPageVo(int num,int size);
 
     /**
      * 删除用户
