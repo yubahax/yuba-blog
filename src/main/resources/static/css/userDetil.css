@@ -1,0 +1,177 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+body{
+    background: linear-gradient(to right, rgb(247, 209, 215), rgb(191, 227, 241));
+    width: 100%;
+    height: 100vh;
+}
+
+@keyframes form-come {
+    from{
+        transform: translateX(200%);
+    }
+    to{
+        transform: translateX(0);
+    }
+}
+
+#form{
+    overflow: hidden;
+    position: relative;
+    /*background-color: rgb(111, 187, 187);*/
+    animation: form-come .7s;
+    width:400px;
+    height: 70%;
+    top: 10%;
+    margin:auto;
+    padding: 30px 10px;
+    border: 1px seashell solid;
+    border-radius: 13px;
+    box-shadow:  1px 1px 2px #467576,
+    -1px -1px 2px #a4ffff;
+}
+.el-form{
+   padding-top: 10px;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.avatar-uploader .el-upload {
+    border: 1px dashed rgba(47, 46, 47, 0.73);
+    border-radius: 50%;
+    cursor: pointer;
+    overflow: hidden;
+    text-align: center;
+    /*margin: auto;*/
+}
+.avatar-uploader .el-upload:hover {
+    border-color:  royalblue;
+}
+.avatar-uploader-icon {
+    font-size: 10px;
+    color: #9fa2a6;
+    width: 80px;
+    height: 40px;
+    line-height: 20px;
+    margin: 20px auto;
+}
+.avatar {
+    width: 80px;
+    height: 80px;
+    display: block;
+}
+
+.el-form-item .el-input{
+    width: 200px;
+}
+
+.el-input__inner::placeholder{
+    font-weight: bold;
+}
+
+.button{
+    font-family: Consolas;
+    margin-top: 15px;
+    font-size: 14px;
+    background: royalblue;
+    padding: .2em 1em;
+    color: white;
+    display: flex;
+    border: none;
+    border-radius: 14px;
+    overflow: hidden;
+    transition: all 0.2s;
+}
+
+.button .svg-wrapper{
+    display: inline-block;
+}
+
+.button:hover{
+    background-color: royalblue;
+    color: white;
+}
+
+.button .span {
+    display: inline-block;
+    height: 24px;
+    line-height: 24px;
+    transition: all 0.3s ease-in-out;
+}
+
+.button .svg {
+    display: inline-block;
+    margin-top: 8px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.button:hover .svg-wrapper {
+    animation: fly-1 0.6s ease-in-out infinite alternate;
+}
+
+.button:hover .svg {
+    transform: translateX(1.8em) rotate(45deg) scale(1.1);
+}
+
+.button:hover .span {
+    transform: translateX(10em);
+}
+
+@keyframes fly-1 {
+    from {
+        transform: translateY(0.1em);
+    }
+
+    to {
+        transform: translateY(-0.1em);
+    }
+}
+
+
+p{
+    border-radius: 50%;
+    transform: translate(-50%,-50%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    background-color: rgb(111, 199, 199);
+    z-index: 0;
+}
+
+/*鼠标进入时的动画*/
+@keyframes come {
+    0%{
+        width: 0;
+        height: 0;
+    }
+    100%{
+        width: 1500px;
+        height: 1500px;
+    }
+}
+
+@keyframes go {
+    0%{
+        width: 0;
+        height: 0;
+    }
+    100%{
+        width: 1500px;
+        height: 1500px;
+    }
+}
+
